@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APPS DEL AJUSTE - By Nova Admvo</title>
+
+  <!-- Fuente moderna -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Iconos (para Telegram y WhatsApp) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-color: #0A0D36;
+      --card-bg: rgba(10, 13, 54, 0.7);
+      --text-color: #e0e0e0;
+      --primary-color: #92CC48;
+      --primary-hover: #7db53c;
+      --secondary-color: #B0FF00;
+      --border-color: rgba(255, 255, 255, 0.1);
+      --light-text-color: #FFFFFF;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: radial-gradient(circle at top left, #10134a, #0A0D36 60%);
+      color: var(--text-color);
+      overflow-x: hidden;
+    }
+
+    /* CABECERA */
+    .page-header {
+      position: relative;
+      padding: 30px 0;
+      text-align: center;
+      border-bottom: 2px solid var(--primary-color);
+      background: linear-gradient(135deg, rgba(10,13,54,0.9), rgba(20,25,80,0.7));
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .header-logo {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+      border-radius: 50%;
+      border: 2px solid var(--secondary-color);
+      margin-bottom: 10px;
+    }
+
+    .header-titles h1 {
+      font-size: 2.2em;
+      color: var(--light-text-color);
+      margin: 0;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .header-titles p {
+      font-size: 1.1em;
+      color: var(--primary-color);
+      margin: 5px 0 0;
+      font-style: italic;
+    }
+
+    /* CONTENEDOR */
+    .container {
+      max-width: 1300px;
+      margin: 40px auto;
+      padding: 0 20px 80px;
+      animation: fadeIn 1s ease;
+    }
+
+    .grid-heading {
+      text-align: center;
+      font-size: 2.2em;
+      font-weight: 400;
+      margin-bottom: 50px;
+      color: var(--secondary-color);
+      text-shadow: 0 0 10px rgba(176, 255, 0, 0.3);
+    }
+
+    /* GRID */
+    .app-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 30px;
+    }
+
+    /* TARJETAS */
+    .app-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      backdrop-filter: blur(8px);
+    }
+
+    .app-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 30px rgba(146, 204, 72, 0.3);
+      border-color: var(--primary-color);
+    }
+
+    .app-logo {
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 15px;
+      border: 3px solid var(--secondary-color);
+      margin-bottom: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .app-card:hover .app-logo {
+      transform: scale(1.08);
+    }
+
+    .app-name {
+      font-size: 1.4em;
+      font-weight: 600;
+      color: var(--light-text-color);
+      margin-bottom: 10px;
+      letter-spacing: 0.5px;
+    }
+
+    .app-description {
+      font-size: 0.95em;
+      color: var(--text-color);
+      margin-bottom: 25px;
+    }
+
+    .download-button {
+      background: var(--primary-color);
+      color: var(--bg-color);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 12px 28px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: inline-block;
+    }
+
+    .download-button:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(146, 204, 72, 0.4);
+    }
+
+    /* ANIMACIONES */
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.7);
+    }
+
+    .modal-content {
+      background: var(--card-bg);
+      margin: 80px auto;
+      padding: 25px 30px;
+      border: 2px solid var(--primary-color);
+      border-radius: 12px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+      animation: slideInDown 0.6s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    @keyframes slideInDown {
+      from {transform: translateY(-100%); opacity: 0;}
+      to {transform: translateY(0); opacity: 1;}
+    }
+
+    .modal-content h2 {
+      color: var(--primary-color);
+      font-size: 1.6em;
+      margin-bottom: 15px;
+    }
+
+    .close-button {
+      background-color: var(--secondary-color);
+      color: var(--bg-color);
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .close-button:hover {
+      background: var(--primary-hover);
+      color: white;
+    }
+
+    /* BOTONES DE CONTACTO */
+    .contact-buttons {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 200;
+    }
+
+    .contact-buttons a {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 26px;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      transition: all 0.3s ease;
+    }
+
+    .telegram-btn {
+      background-color: #0088cc;
+    }
+    .telegram-btn:hover {
+      background-color: #06b1ff;
+      transform: scale(1.1);
+    }
+
+    .whatsapp-btn {
+      background-color: #25D366;
+    }
+    .whatsapp-btn:hover {
+      background-color: #1ebe57;
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ENCABEZADO -->
+  <header class="page-header">
+    <img src="https://huggingface.co/datasets/darkred06/logos/resolve/main/file.png?download=true" alt="Logo Nova Admvo" class="header-logo">
+    <div class="header-titles">
+      <h1>APPS DEL AJUSTE</h1>
+      <p>By Nova Admvo</p>
+    </div>
+  </header>
+
+  <!-- CONTENEDOR PRINCIPAL -->
+  <div class="container">
+    <h4 class="grid-heading">TODAS LAS DESCARGAS SON DIRECTAS</h4>
+
+    <div class="app-grid">
+      <div class="app-card">
+        <img src="https://huggingface.co/datasets/darkred06/NOVA/resolve/main/sura.png?download=true" class="app-logo">
+        <div class="app-name">SURA</div>
+        <div class="app-description">VERSION --> 1080</div>
+        <a href="https://huggingface.co/datasets/darkred06/appsdelajuste1/resolve/main/Sura1080.apk?download=true" class="download-button">Descargar</a>
+      </div>
+
+      <div class="app-card">
+        <img src="https://huggingface.co/datasets/darkred06/NOVA/resolve/main/zurich.png?download=true" class="app-logo">
+        <div class="app-name">ZURICH</div>
+        <div class="app-description">VERSION --> 1.1.28</div>
+        <a href="https://huggingface.co/datasets/darkred06/appsdelajuste1/resolve/main/zurich.apk?download=true" class="download-button">Descargar</a>
+      </div>
+
+      <div class="app-card">
+        <img src="https://play-lh.googleusercontent.com/eIBCmKgBdjIvmBGQBjcFRWbX6WXlFRnPPBj13vCkros-S953b-BG546edG6cyyC3zw=w240-h480-rw" class="app-logo">
+        <div class="app-name">eDUA</div>
+        <div class="app-description">VERSION --> 1.0.21</div>
+        <a href="https://play.google.com/store/apps/details?id=com.amis.adjustment&hl=es_419" class="download-button">Descargar</a>
+      </div>
+
+      <div class="app-card">
+        <img src="https://huggingface.co/datasets/darkred06/NOVA/resolve/main/afirme.jpg?download=true" class="app-logo">
+        <div class="app-name">AFIRME</div>
+        <div class="app-description">VERSION -->1120</div>
+        <a href="https://huggingface.co/datasets/darkred06/appsdelajuste1/resolve/main/AfirmePro1120.apk?download=true" class="download-button">Descargar</a>
+      </div>
+
+      <div class="app-card">
+        <img src="https://huggingface.co/datasets/darkred06/NOVA/resolve/main/POTOSI%20NUEVA.png?download=true" class="app-logo">
+        <div class="app-name">POTOSI</div>
+        <div class="app-description">VERSION --> 26</div>
+        <a href="https://huggingface.co/datasets/darkred06/appsdelajuste1/resolve/main/PotosiV26.apk?download=true" class="download-button">Descargar</a>
+      </div>
+
+      <div class="app-card">
+        <img src="https://huggingface.co/datasets/darkred06/NOVA/resolve/main/atlas.jpg?download=true" class="app-logo">
+        <div class="app-name">ATLAS</div>
+        <div class="app-description">VERSION --></div>
+        <a href="https://huggingface.co/datasets/darkred06/appsdelajuste1/resolve/main/atlas.apk?download=true" class="download-button">Descargar</a>
+      </div>
+      
+      
+      
+      <div class="app-card">
+        <img src="data:image/png;base64,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" class="app-logo">
+        <div class="app-name">CHUBB</div>
+        <div class="app-description">VERSION --></div>
+        <a href="https://huggingface.co/datasets/darkred06/appsdelajuste1/resolve/main/chubb.apk?download=true" class="download-button">Descargar</a>
+      </div>
+
+      
+      
+      
+      
+      
+      
+      
+      
+
+      <div class="app-card">
+        <img src="https://play-lh.googleusercontent.com/34FzdVfz9k0EBKXcrxzA489d_utXm2K_QCZX-hzua78G8-MTb66b9VFwvo9EcHKxzUPx=w240-h480-rw" class="app-logo">
+        <div class="app-name">ALLIANZ AAA</div>
+        <div class="app-description">VERSION PLAYSTORE</div>
+        <a href="https://play.google.com/store/apps/details?id=mx.com.allianz.it.apps.aaa&hl=es_419" class="download-button">Descargar</a>
+      </div>
+      
+       <div class="app-card">
+        <img src="data:image/png;base64,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" class="app-logo">
+        <div class="app-name">BANORTE</div>
+        <div class="app-description">P R O X I M A M E N T E</div>
+        <a href="https://play.google.com/store/apps/details?id=mx.com.allianz.it.apps.aaa&hl=es_419" class="download-button">Descargar</a>
+      </div>
+      
+      
+      
+
+      <div class="app-card">
+        <img src="https://huggingface.co/datasets/darkred06/logos/resolve/main/file.png?download=true" class="app-logo">
+        <div class="app-name">NOVALINK APP</div>
+        <div class="app-description">P R O X I M A M E N T E</div>
+        <a href="#" class="download-button">Descargar</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL -->
+  <div id="avisoModal" class="modal">
+    <div class="modal-content">
+      <h2>A V I S O</h2>
+      <p>Puede que algunas apps estén desactualizadas.</p>
+      <p><strong>En caso de ser así, notificar a Gus.</strong></p>
+      <button class="close-button" onclick="cerrarModal()">Entendido</button>
+    </div>
+  </div>
+
+  <!-- BOTONES DE CONTACTO -->
+  <div class="contact-buttons">
+    <a href="https://t.me/novaadmvo" target="_blank" class="telegram-btn"><i class="fab fa-telegram-plane"></i></a>
+    <a href="https://wa.me/qr/DRSSQPI66FCIJ1" target="_blank" class="whatsapp-btn"><i class="fab fa-whatsapp"></i></a>
+  </div>
+
+  <!--<script>
+    window.onload = function() {
+      const modal = document.getElementById('avisoModal');
+      modal.style.display = "block";
+    };
+
+    function cerrarModal() {
+      document.getElementById('avisoModal').style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById('avisoModal');
+      if (event.target == modal) modal.style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
